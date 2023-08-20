@@ -101,12 +101,9 @@ public class BoardDAO {
        return result == 1;
     }
    
-   public Map<String, Object> getBoardInfo(int boardNo) {
+   public BoardVO getBoardInfo(int boardNo) {
       
       BoardVO boardVO = new BoardVO();
-      BoardLikeDislikeDAO boardLikeDislikeDAO = new BoardLikeDislikeDAO();
-      Map<String, Object> boardData = new HashMap<>();
-      
       try {
          String sql = "SELECT BOARD_NO, BOARD_TITLE, BOARD_DATE, NICKNAME, BOARD_CONTENT, BOARD_IMG_URL FROM BOARD f JOIN member s ON f.MEMBER_NO = s.member_no WHERE BOARD_NO = ?";
          conn = Common.getConnection();
@@ -128,10 +125,6 @@ public class BoardDAO {
             boardVO.setNickName(nickName);
             boardVO.setBoardContent(board_content);
             boardVO.setBoardImgUrl(board_img_url);
-            
-            boardData.put("board", boardVO);
-            boardData.put("boardLikeDislike", boardLikeDislikeDAO.getBoardLikeDislike(boardNo));
-            
          }
       } catch (Exception e) {
          e.printStackTrace();
@@ -140,6 +133,8 @@ public class BoardDAO {
          Common.close(stmt);
          Common.close(conn);
       }
+      
+      return boardVO;
    }
 
 }

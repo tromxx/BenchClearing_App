@@ -12,6 +12,7 @@ import java.util.Map;
 @RestController
 
 public class BoardController {
+    
     @GetMapping("/Homeplate")
     public ResponseEntity<List<BoardVO>> getBoard(@RequestParam String cat, int page) {
         BoardDAO dao = new BoardDAO();
