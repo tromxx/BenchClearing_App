@@ -57,7 +57,7 @@
 - 크롤링(Crawling) 사용해 실시간 뉴스 정보 업데이트
 
 ### ERD
-- 확인 필요
+- (https://www.erdcloud.com/d/reJwcgghTte6jgdpJ)
 
 ### 팀원
 - 허식 (https://github.com/tromxx)
