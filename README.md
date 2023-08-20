@@ -61,7 +61,7 @@
 
 ### 팀원
 - 허식 (https://github.com/tromxx)
-- 김준 (https://github.com/kimchoker)
+- 김준혁 (https://github.com/kimchoker)
 - 고태훈 (https://github.com/koth1999)
 
 ### 개발 기간
