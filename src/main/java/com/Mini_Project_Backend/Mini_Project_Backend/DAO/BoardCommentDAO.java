@@ -2,6 +2,7 @@ package com.Mini_Project_Backend.Mini_Project_Backend.DAO;
 
 
 import com.Mini_Project_Backend.Mini_Project_Backend.Util.Common;
+import com.Mini_Project_Backend.Mini_Project_Backend.Util.SecurityUtil;
 import com.Mini_Project_Backend.Mini_Project_Backend.VO.BoardCommentVO;
 
 import java.sql.Connection;
@@ -66,6 +67,26 @@ public class BoardCommentDAO {
          Common.close(conn);
       }
       return boardCommentData;
+   }
+   
+   public Map<String, Object> updateBoardComment(int boardNo, String content){
+      int memberId = SecurityUtil.getMemberId();
+      try {
+         conn = Common.getConnection();
+         String sql = "INSERT INTO Board_Comment (Board_Comment_No, Board_No, Member_No, Board_Comment_Content, Board_Comment_Date) VALUES (Board_Comment_No_Seq.NEXTVAL, ?, ?, ?, SYSDATE)";
+         pStmt = conn.prepareStatement(sql);
+         pStmt.setInt(1, boardNo);
+         pStmt.setInt(2, memberId);
+         pStmt.setString(3, content);
+         pStmt.executeUpdate();
+      } catch (Exception e) {
+         e.printStackTrace();
+      }finally {
+         Common.close(pStmt);
+         Common.close(conn);
+      }
+      
+      return getBoardComment(boardNo);
    }
    
 }

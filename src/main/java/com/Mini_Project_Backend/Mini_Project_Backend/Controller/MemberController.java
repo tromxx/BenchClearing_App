@@ -25,15 +25,12 @@ import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
 
-@CrossOrigin(origins = "http://localhost:3000")
 // 크로스오리진 에러를 체크하지 말라고 명령하는 명령어
 @RestController
 
 public class MemberController {
     
     String backend = "http://localhost:8111";
-
-    String frontend = "http://localhost:3000";
 
     @Autowired
     private JavaMailSender mailSender;
@@ -112,7 +109,7 @@ public class MemberController {
     public RedirectView emailAuth(@RequestParam String id, @RequestParam String authKey) {
         MemberDAO dao = new MemberDAO();
         boolean result = dao.updateAuthKeyByAuthKey(id, authKey);
-        return new RedirectView(frontend + "/login");
+        return new RedirectView(backend + "/login");
     }
     
     

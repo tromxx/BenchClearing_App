@@ -53,3 +53,50 @@ compileJava.options.encoding = 'UTF-8'
 tasks.withType(JavaCompile).configureEach {
 	options.encoding = 'UTF-8'
 }
+
+def frontendDir = "$projectDir/src/main/frontend"
+
+sourceSets {
+	main {
+		resources { srcDirs = ["$projectDir/src/main/resources"]
+		}
+	}
+}
+
+processResources { dependsOn "copyReactBuildFiles" }
+
+tasks.register('installReact', Exec) {
+	workingDir "$frontendDir"
+	inputs.dir "$frontendDir"
+	group = BasePlugin.BUILD_GROUP
+	if (System.getProperty('os.name').toLowerCase(Locale.ROOT).contains('windows')) {
+		commandLine "yarn.cmd", "install"
+	} else {
+		commandLine "yarn", "install"
+	}
+}
+
+
+tasks.register('buildReact', Exec) {
+	dependsOn "installReact"
+	workingDir "$frontendDir"
+	inputs.dir "$frontendDir"
+	group = BasePlugin.BUILD_GROUP
+	if (System.getProperty('os.name').toLowerCase(Locale.ROOT).contains('windows')) {
+		commandLine "yarn.cmd", "run", "build"
+	} else {
+		commandLine "yarn", "run", "build"
+	}
+}
+
+
+tasks.register('copyReactBuildFiles', Copy) {
+	dependsOn "buildReact"
+	from "$frontendDir/build"
+	into "$projectDir/src/main/resources/static"
+}
+
+
+jar {
+	enabled = false
+}
