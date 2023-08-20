@@ -60,10 +60,10 @@
 - 확인 필요
 
 ### 팀원
-- tromxx
-- tromxx
-- tromxx
-- 
+- 허식 (https://github.com/tromxx)
+- 김준 (https://github.com/kimchoker)
+- 고태훈 (https://github.com/koth1999)
+
 ### 개발 기간
 - 기획 : 2022.05.04 - 2022.05.10
 - 개발 : 2022.05.10 - 2022.05.26
