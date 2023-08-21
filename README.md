@@ -49,7 +49,7 @@
 
 ### 프로젝트 주요 기능
 
-- 사이트 자체 회원가입시 문자 및 이메일 인증(Naver Cloud Platform Sens api, Java Mail api)
+- 사이트 자체 회원가입시 이메일 인증(Java Mail api)
 - jwt(Java Web Token)과 이용해 보안 성능 향상
 - 사용자 편의를 위한 게시글 및 뉴스 페이지 12개 단위 조회 및 페이지네이션(직접 구현)
 - 글 작성시 이미지 업로드(firebase)
