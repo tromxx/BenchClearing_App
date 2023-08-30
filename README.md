@@ -80,7 +80,7 @@
 ###  빌드
 
 ```sh
-./gradlew build -x test
+./gradlew build 
 ```
 ```sh
 java -jar build/libs/Mini_Project_Backend-0.0.1-SNAPSHOT.jar
